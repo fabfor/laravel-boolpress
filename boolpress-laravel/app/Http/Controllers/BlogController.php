@@ -22,6 +22,10 @@ class BlogController extends Controller
 
     public function showPost($id){
 
-      return view('frontoffice.post',['p'=>Post::find($id)]);
+      $post = Post::find($id);
+      if ($post != null)
+        return view('frontoffice.post',['p'=>$post]);
+      else
+        abort(404);
     }
 }
